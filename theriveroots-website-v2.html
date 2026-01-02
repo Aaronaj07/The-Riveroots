@@ -1,0 +1,1286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Riveroots Waterfront Homestay | Kumbalangi, Kerala</title>
+    <meta name="description" content="Experience tranquility at The Riveroots - a serene waterfront homestay in Kumbalangi, Kerala. Two independent riverside suites surrounded by nature.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-green: #2d5016;
+            --secondary-green: #4a7c3a;
+            --accent-blue: #1e5a6e;
+            --warm-beige: #e8dcc4;
+            --text-dark: #2c3e24;
+            --text-light: #6b7c5d;
+            --white: #ffffff;
+            --off-white: #f5e6d3;
+            --border-color: #d4d0c0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Raleway', sans-serif;
+            color: var(--text-dark);
+            background: var(--off-white);
+            line-height: 1.7;
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-family: 'Lora', serif;
+            font-weight: 600;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .top-bar {
+            background: var(--primary-green);
+            color: var(--white);
+            padding: 0.6rem 0;
+            text-align: center;
+            font-size: 0.95rem;
+        }
+
+        .top-bar a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 5%;
+            position: relative;
+            z-index: 1001;
+        }
+
+        .logo {
+            font-family: 'Lora', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-green);
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: color 0.3s ease;
+        }
+
+        .nav-menu a:hover {
+            color: var(--secondary-green);
+        }
+
+        .book-now-btn {
+            background: var(--accent-blue);
+            color: var(--white) !important;
+            padding: 0.7rem 1.8rem;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .book-now-btn:hover {
+            background: var(--primary-green);
+            transform: translateY(-2px);
+        }
+
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            color: var(--primary-green);
+            cursor: pointer;
+            padding: 0.5rem;
+            transition: transform 0.3s ease;
+            position: relative;
+            z-index: 1002;
+        }
+
+        .mobile-toggle:hover {
+            transform: scale(1.1);
+        }
+
+        .mobile-toggle:active {
+            transform: scale(0.95);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 90vh;
+            background: linear-gradient(rgba(29, 53, 20, 0.4), rgba(29, 53, 20, 0.5)), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><rect fill="%232d5016" width="1200" height="800"/><path fill="%234a7c3a" opacity="0.3" d="M0,400 Q300,300 600,400 T1200,400 L1200,800 L0,800 Z"/></svg>');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            padding: 0 2rem;
+            z-index: 2;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+            font-weight: 300;
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        .hero-description {
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
+            font-weight: 300;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-cta {
+            display: inline-block;
+            background: var(--white);
+            color: var(--primary-green);
+            padding: 1rem 3rem;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .hero-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 5rem 5%;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-label {
+            color: var(--secondary-green);
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .section-title {
+            font-size: 2.8rem;
+            color: var(--primary-green);
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+
+        .section-description {
+            font-size: 1.15rem;
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        /* Intro Section */
+        .intro-section {
+            background: var(--white);
+        }
+
+        .intro-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .intro-content h2 {
+            font-size: 2.5rem;
+            color: var(--primary-green);
+            margin-bottom: 1.5rem;
+        }
+
+        .intro-content p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-dark);
+            line-height: 1.9;
+        }
+
+        .intro-features {
+            list-style: none;
+            margin: 2rem 0;
+        }
+
+        .intro-features li {
+            font-size: 1.05rem;
+            padding: 0.8rem 0;
+            padding-left: 2rem;
+            position: relative;
+            color: var(--text-dark);
+        }
+
+        .intro-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--secondary-green);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .intro-buttons {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .btn-primary, .btn-secondary {
+            padding: 0.9rem 2rem;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-block;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-primary {
+            background: var(--accent-blue);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-green);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary-green);
+            border: 2px solid var(--primary-green);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary-green);
+            color: var(--white);
+        }
+
+        .intro-image {
+            height: 500px;
+            background: linear-gradient(135deg, var(--accent-blue), var(--secondary-green));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 1.2rem;
+        }
+
+        /* Features Section */
+        .features-section {
+            background: var(--off-white);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature-card {
+            text-align: center;
+            padding: 2rem 1rem;
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
+
+        .feature-card h3 {
+            font-size: 1.2rem;
+            color: var(--primary-green);
+            margin-bottom: 0.8rem;
+        }
+
+        .feature-card p {
+            font-size: 0.95rem;
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        /* Rooms Section */
+        .rooms-section {
+            background: var(--white);
+        }
+
+        .rooms-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 4rem;
+            font-size: 1.15rem;
+            color: var(--text-dark);
+            line-height: 1.9;
+        }
+
+        .room-card {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 4rem;
+            align-items: center;
+        }
+
+        .room-card:nth-child(even) {
+            direction: rtl;
+        }
+
+        .room-card:nth-child(even) > * {
+            direction: ltr;
+        }
+
+        .room-image {
+            height: 400px;
+            background: linear-gradient(135deg, var(--warm-beige), var(--secondary-green));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 1.1rem;
+        }
+
+        .room-content h3 {
+            font-size: 2rem;
+            color: var(--primary-green);
+            margin-bottom: 1rem;
+        }
+
+        .room-content p {
+            font-size: 1.05rem;
+            color: var(--text-dark);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .room-amenities {
+            list-style: none;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.8rem;
+        }
+
+        .room-amenities li {
+            font-size: 0.95rem;
+            color: var(--text-dark);
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .room-amenities li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--secondary-green);
+            font-size: 1.5rem;
+        }
+
+        .view-all-btn {
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        /* Activities Section */
+        .activities-section {
+            background: var(--off-white);
+        }
+
+        .activities-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .activity-card {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 8px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .activity-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .activity-card h3 {
+            font-size: 1.5rem;
+            color: var(--primary-green);
+            margin-bottom: 0.8rem;
+        }
+
+        .activity-card p {
+            font-size: 1rem;
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+
+        /* Dining Section */
+        .dining-section {
+            background: var(--white);
+        }
+
+        .dining-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            margin-top: 3rem;
+        }
+
+        .dining-image {
+            height: 450px;
+            background: linear-gradient(135deg, var(--accent-blue), var(--secondary-green));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 1.2rem;
+        }
+
+        .dining-content h3 {
+            font-size: 2.2rem;
+            color: var(--primary-green);
+            margin-bottom: 1.5rem;
+        }
+
+        .dining-content p {
+            font-size: 1.05rem;
+            color: var(--text-dark);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .dining-highlights {
+            list-style: none;
+            margin: 2rem 0;
+        }
+
+        .dining-highlights li {
+            font-size: 1rem;
+            padding: 0.7rem 0;
+            padding-left: 2rem;
+            position: relative;
+            color: var(--text-dark);
+        }
+
+        .dining-highlights li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--secondary-green);
+            font-weight: bold;
+        }
+
+        /* Location Section */
+        .location-section {
+            background: var(--off-white);
+        }
+
+        .location-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .location-content h3 {
+            font-size: 2rem;
+            color: var(--primary-green);
+            margin-bottom: 1.5rem;
+        }
+
+        .location-content p {
+            font-size: 1.1rem;
+            color: var(--text-dark);
+            margin-bottom: 1.5rem;
+            line-height: 1.9;
+        }
+
+        .location-details {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 8px;
+            margin: 2rem 0;
+        }
+
+        .location-details p {
+            font-size: 1rem;
+            margin: 0.8rem 0;
+        }
+
+        .location-details strong {
+            color: var(--primary-green);
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: var(--primary-green);
+            color: var(--white);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.3fr;
+            gap: 5rem;
+            align-items: start;
+        }
+
+        .contact-info h2 {
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-info p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+            opacity: 0.95;
+        }
+
+        .contact-details {
+            list-style: none;
+        }
+
+        .contact-details li {
+            font-size: 1.05rem;
+            margin-bottom: 1.2rem;
+            padding-left: 2rem;
+            position: relative;
+        }
+
+        .contact-details li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--warm-beige);
+        }
+
+        .contact-details a {
+            color: var(--white);
+            text-decoration: none;
+        }
+
+        .contact-details a:hover {
+            text-decoration: underline;
+        }
+
+        .contact-form {
+            background: var(--white);
+            padding: 3rem;
+            border-radius: 8px;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            color: var(--text-dark);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.9rem;
+            border: 1px solid var(--border-color);
+            border-radius: 5px;
+            font-family: 'Raleway', sans-serif;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--secondary-green);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 140px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1rem;
+            background: var(--accent-blue);
+            color: var(--white);
+            border: none;
+            border-radius: 5px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .submit-btn:hover {
+            background: var(--primary-green);
+            transform: translateY(-2px);
+        }
+
+        .success-message {
+            display: none;
+            background: var(--secondary-green);
+            color: var(--white);
+            padding: 1.2rem;
+            border-radius: 5px;
+            margin-top: 1rem;
+            text-align: center;
+        }
+
+        .success-message.show {
+            display: block;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--text-dark);
+            color: var(--white);
+            padding: 3rem 5%;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-logo {
+            font-family: 'Lora', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--warm-beige);
+        }
+
+        .footer-tagline {
+            font-size: 1rem;
+            margin-bottom: 2rem;
+            opacity: 0.8;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            list-style: none;
+        }
+
+        .footer-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--warm-beige);
+        }
+
+        .copyright {
+            font-size: 0.9rem;
+            opacity: 0.7;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 968px) {
+            .nav-menu {
+                display: none;
+                position: fixed;
+                top: 110px;
+                left: 0;
+                right: 0;
+                background: var(--white);
+                flex-direction: column;
+                padding: 2rem;
+                gap: 1.5rem;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+                z-index: 999;
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .mobile-toggle {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .section-title {
+                font-size: 2.2rem;
+            }
+
+            .intro-grid,
+            .dining-grid,
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .room-card {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .room-card:nth-child(even) {
+                direction: ltr;
+            }
+
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .activities-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .intro-buttons {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .room-amenities {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="top-bar">
+            Call Us at <a href="tel:+919447148461">+91 94471 48461</a>
+        </div>
+        <nav>
+            <a href="#" class="logo">The Riveroots</a>
+            <button class="mobile-toggle" onclick="toggleMenu()" type="button" aria-label="Toggle menu">☰</button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#rooms">Suites</a></li>
+                <li><a href="#activities">Activities</a></li>
+                <li><a href="#dining">Dining</a></li>
+                <li><a href="#location">Location</a></li>
+                <li><a href="#contact" class="book-now-btn">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <p class="hero-subtitle">Nature | Serenity | Waterfront</p>
+            <h1>The Riveroots Waterfront Homestay</h1>
+            <p class="hero-description">
+                Escape to The Riveroots – Where the River Meets Tranquility
+            </p>
+            <a href="#contact" class="hero-cta">Reserve Your Stay</a>
+        </div>
+    </section>
+
+    <!-- Intro Section -->
+    <section class="intro-section" id="about">
+        <div class="container">
+            <div class="intro-grid">
+                <div class="intro-content">
+                    <h2>A Tranquil Haven by the Water</h2>
+                    <p>
+                        Nestled along the serene waterfront of Kumbalangi, Kerala, The Riveroots is a 
+                        peaceful retreat that invites you to escape the noise and embrace nature's calm. 
+                        Surrounded by lush greenery and gentle river breezes, our homestay offers an 
+                        authentic connection with Kerala's natural beauty.
+                    </p>
+                    <p>
+                        With panoramic water views and abundant trees, The Riveroots provides the perfect 
+                        setting for relaxation, reflection, and reconnection with nature.
+                    </p>
+                    
+                    <ul class="intro-features">
+                        <li><strong>Waterfront Location</strong> – Direct access to river views and breezes</li>
+                        <li><strong>Nature Immersion</strong> – Surrounded by trees and natural landscapes</li>
+                        <li><strong>Independent Suites</strong> – Two private bedrooms with modern comfort</li>
+                        <li><strong>Modern Amenities</strong> – WiFi, parking, and attached bathrooms</li>
+                    </ul>
+
+                    <div class="intro-buttons">
+                        <a href="#contact" class="btn-primary">Reserve Your Suite</a>
+                        <a href="#rooms" class="btn-secondary">Our Suites</a>
+                    </div>
+                </div>
+                <div class="intro-image">
+                    Your Beautiful Waterfront Property Image Here
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-label">What Makes The Riveroots Special</p>
+                <h2 class="section-title">Experience Authentic Kerala Living</h2>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🌊</div>
+                    <h3>Waterfront Views</h3>
+                    <p>Wake up to stunning river vistas and the soothing sounds of flowing water</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🌳</div>
+                    <h3>Nature Sanctuary</h3>
+                    <p>Immerse yourself in lush greenery and abundant natural beauty</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🏡</div>
+                    <h3>Independent Suites</h3>
+                    <p>Two private bedrooms with attached bathrooms for complete privacy</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">📶</div>
+                    <h3>Modern Comfort</h3>
+                    <p>Stay connected with WiFi and enjoy convenient parking facilities</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rooms Section -->
+    <section class="rooms-section" id="rooms">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-label">Accommodations</p>
+                <h2 class="section-title">Stay in Our Riverside Suites</h2>
+            </div>
+
+            <p class="rooms-intro">
+                The Riveroots offers <strong>two independent suites</strong>, each thoughtfully designed 
+                for your comfort and privacy. Both rooms feature attached bathrooms, modern amenities, 
+                and are surrounded by the natural beauty of Kumbalangi's waterfront landscape.
+            </p>
+
+            <div class="room-card">
+                <div class="room-image">Riverside Suite One - Photo</div>
+                <div class="room-content">
+                    <h3>Riverside Suite One</h3>
+                    <p>
+                        A spacious and serene bedroom with stunning water views. This suite offers complete 
+                        independence with its own private entrance and attached bathroom facilities. Perfect 
+                        for couples or solo travelers seeking a peaceful waterfront retreat.
+                    </p>
+                    <ul class="room-amenities">
+                        <li>Queen-size comfortable bed</li>
+                        <li>Attached private bathroom</li>
+                        <li>Stunning river views</li>
+                        <li>Independent entrance</li>
+                        <li>Modern amenities</li>
+                        <li>Natural ventilation</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="room-card">
+                <div class="room-image">Riverside Suite Two - Photo</div>
+                <div class="room-content">
+                    <h3>Riverside Suite Two</h3>
+                    <p>
+                        Another beautiful independent bedroom surrounded by nature's embrace. This suite 
+                        combines privacy with comfort, offering attached facilities and a serene atmosphere 
+                        perfect for relaxation and rejuvenation.
+                    </p>
+                    <ul class="room-amenities">
+                        <li>Queen-size comfortable bed</li>
+                        <li>Attached private bathroom</li>
+                        <li>Garden and nature views</li>
+                        <li>Independent entrance</li>
+                        <li>Modern amenities</li>
+                        <li>Abundant natural light</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="view-all-btn">
+                <a href="#contact" class="btn-primary">Check Availability & Pricing</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Activities Section -->
+    <section class="activities-section" id="activities">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-label">Experiences</p>
+                <h2 class="section-title">Unique Experiences Await You</h2>
+                <p class="section-description">
+                    From peaceful riverside walks to exploring Kumbalangi's natural beauty, 
+                    The Riveroots offers unique experiences for every traveler.
+                </p>
+            </div>
+
+            <div class="activities-grid">
+                <div class="activity-card">
+                    <h3>🚶‍♂️ Nature Walks & Birdwatching</h3>
+                    <p>
+                        Explore the lush surroundings on foot and discover the rich biodiversity of 
+                        Kumbalangi. Perfect for nature enthusiasts and bird lovers.
+                    </p>
+                </div>
+
+                <div class="activity-card">
+                    <h3>🌅 Riverside Relaxation</h3>
+                    <p>
+                        Unwind by the water's edge, enjoy breathtaking sunsets, and listen to the 
+                        soothing sounds of nature all around you.
+                    </p>
+                </div>
+
+                <div class="activity-card">
+                    <h3>🎣 Local Village Experience</h3>
+                    <p>
+                        Discover authentic Kerala village life in Kumbalangi, interact with locals, 
+                        and learn about traditional fishing and farming practices.
+                    </p>
+                </div>
+
+                <div class="activity-card">
+                    <h3>📸 Photography & Stargazing</h3>
+                    <p>
+                        Capture stunning natural landscapes during the day and enjoy clear night skies 
+                        perfect for stargazing away from city lights.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dining Section -->
+    <section class="dining-section" id="dining">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-label">Culinary Experience</p>
+                <h2 class="section-title">Savor Authentic Kerala Cuisine</h2>
+            </div>
+
+            <div class="dining-grid">
+                <div class="dining-image">
+                    Kerala Cuisine Photo Here
+                </div>
+                <div class="dining-content">
+                    <h3>Experience Traditional Home-Cooked Meals</h3>
+                    <p>
+                        At The Riveroots, we believe that food is an essential part of experiencing 
+                        authentic Kerala culture. We can arrange traditional home-cooked meals featuring 
+                        local ingredients and time-honored recipes.
+                    </p>
+                    <p>
+                        From fresh seafood caught in nearby waters to organic vegetables from local farms, 
+                        every meal tells a story of Kerala's rich culinary heritage.
+                    </p>
+
+                    <ul class="dining-highlights">
+                        <li><strong>Traditional Kerala Dishes</strong> – Authentic recipes passed through generations</li>
+                        <li><strong>Fresh Local Ingredients</strong> – Sourced from nearby farms and waters</li>
+                        <li><strong>Home-Cooked Meals</strong> – Prepared with care and traditional methods</li>
+                        <li><strong>Special Dietary Needs</strong> – We accommodate vegetarian and specific requirements</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location Section -->
+    <section class="location-section" id="location">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-label">Find Us</p>
+                <h2 class="section-title">Getting to The Riveroots</h2>
+            </div>
+
+            <div class="location-content">
+                <h3>Located in Beautiful Kumbalangi, Kerala</h3>
+                <p>
+                    The Riveroots is nestled in Kumbalangi, a picturesque village known for its scenic 
+                    backwaters and authentic Kerala countryside experience. We're easily accessible from 
+                    Kochi and other major Kerala destinations.
+                </p>
+
+                <div class="location-details">
+                    <p><strong>📍 Location:</strong> Kumbalangi, Kerala, India</p>
+                    <p><strong>✈️ Nearest Airport:</strong> Cochin International Airport (approx. 40 km)</p>
+                    <p><strong>🚉 Nearest Railway Station:</strong> Ernakulam Junction (approx. 20 km)</p>
+                    <p><strong>🅿️ Parking:</strong> Available on premises</p>
+                </div>
+
+                <p>
+                    <strong>Contact us for detailed directions and travel assistance.</strong> We're happy 
+                    to help you plan your journey to The Riveroots and ensure a smooth arrival.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h2>Get In Touch</h2>
+                    <p>
+                        Ready to experience the tranquility of The Riveroots? Contact us to check 
+                        availability, inquire about pricing, and plan your perfect waterfront retreat 
+                        in Kumbalangi, Kerala.
+                    </p>
+
+                    <ul class="contact-details">
+                        <li><strong>Phone:</strong> <a href="tel:+919447148461">+91 94471 48461</a></li>
+                        <li><strong>Email:</strong> <a href="/cdn-cgi/l/email-protection#fb8f939e89928d9e8994948f88bb9c969a9297d5989496"><span class="__cf_email__" data-cfemail="b3c7dbd6c1dac5d6c1dcdcc7c0f3d4ded2dadf9dd0dcde">[email&#160;protected]</span></a></li>
+                        <li><strong>Location:</strong> Kumbalangi, Kerala, India</li>
+                        <li><strong>Website:</strong> <a href="https://theriveroots.in">theriveroots.in</a></li>
+                    </ul>
+
+                    <p style="margin-top: 2rem;">
+                        We typically respond to inquiries within 24 hours. For urgent bookings, 
+                        please mention "Urgent" in your message subject.
+                    </p>
+                </div>
+
+                <div class="contact-form">
+                    <form id="contactForm" onsubmit="handleSubmit(event)">
+                        <div class="form-group">
+                            <label for="name">Your Name *</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="dates">Preferred Dates</label>
+                            <input type="text" id="dates" name="dates" placeholder="e.g., March 15-20, 2026">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Your Message *</label>
+                            <textarea id="message" name="message" required placeholder="Tell us about your stay requirements, number of guests, special requests..."></textarea>
+                        </div>
+
+                        <button type="submit" class="submit-btn">Send Inquiry</button>
+                        
+                        <div class="success-message" id="successMessage">
+                            ✓ Thank you! Your inquiry has been received. We'll get back to you soon.
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">The Riveroots</div>
+            <p class="footer-tagline">Where water meets tranquility</p>
+
+            <ul class="footer-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#rooms">Suites</a></li>
+                <li><a href="#activities">Activities</a></li>
+                <li><a href="#dining">Dining</a></li>
+                <li><a href="#location">Location</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+
+            <div class="copyright">
+                Copyright © 2026 The Riveroots - All Rights Reserved. | Kumbalangi, Kerala, India
+            </div>
+        </div>
+    </footer>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    // Close mobile menu if open
+                    const menu = document.getElementById('navMenu');
+                    const toggle = document.querySelector('.mobile-toggle');
+                    menu.classList.remove('active');
+                    if (toggle) {
+                        toggle.innerHTML = '☰';
+                    }
+                }
+            });
+        });
+
+        // Mobile menu toggle
+        function toggleMenu() {
+            console.log('Toggle menu clicked'); // Debug log
+            const menu = document.getElementById('navMenu');
+            const toggle = document.querySelector('.mobile-toggle');
+            
+            if (!menu) {
+                console.error('Menu not found');
+                return;
+            }
+            
+            menu.classList.toggle('active');
+            
+            // Change icon based on menu state
+            if (toggle) {
+                if (menu.classList.contains('active')) {
+                    toggle.innerHTML = '✕';
+                } else {
+                    toggle.innerHTML = '☰';
+                }
+            }
+        }
+
+        // Also add click event listener as backup
+        document.addEventListener('DOMContentLoaded', function() {
+            const toggleBtn = document.querySelector('.mobile-toggle');
+            if (toggleBtn) {
+                toggleBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    toggleMenu();
+                });
+            }
+        });
+
+        // Form submission
+        function handleSubmit(event) {
+            event.preventDefault();
+            const form = event.target;
+            const formData = new FormData(form);
+            
+            // Show success message
+            document.getElementById('successMessage').classList.add('show');
+            
+            // Reset form
+            form.reset();
+            
+            // Hide success message after 5 seconds
+            setTimeout(() => {
+                document.getElementById('successMessage').classList.remove('show');
+            }, 5000);
+            
+            // Log form data (for developm
