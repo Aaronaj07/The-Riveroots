@@ -88,6 +88,10 @@
             align-items: center;
         }
 
+        .nav-menu li {
+            position: relative;
+        }
+
         .nav-menu a {
             text-decoration: none;
             color: var(--text-dark);
@@ -96,10 +100,79 @@
             text-transform: uppercase;
             letter-spacing: 0.5px;
             transition: color 0.3s ease;
+            display: block;
+            padding: 0.5rem 0;
         }
 
         .nav-menu a:hover {
             color: var(--secondary-green);
+        }
+
+        /* Dropdown Menu Styles */
+        .nav-item {
+            position: relative;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background: var(--white);
+            min-width: 220px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            border-radius: 5px;
+            z-index: 1000;
+            margin-top: 0;
+            padding: 0.5rem 0;
+        }
+
+        .dropdown-content::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: 0;
+            right: 0;
+            height: 10px;
+            background: transparent;
+        }
+
+        .dropdown-content a {
+            color: var(--text-dark);
+            padding: 0.8rem 1.5rem;
+            text-decoration: none;
+            display: block;
+            font-size: 0.9rem;
+            transition: background 0.3s ease;
+        }
+
+        .dropdown-content a:first-child {
+            border-radius: 5px 5px 0 0;
+        }
+
+        .dropdown-content a:last-child {
+            border-radius: 0 0 5px 5px;
+        }
+
+        .dropdown-content a:hover {
+            background: var(--off-white);
+            color: var(--primary-green);
+        }
+
+        /* Show dropdown on hover */
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown > a::after {
+            content: ' ▼';
+            font-size: 0.7rem;
+            margin-left: 0.3rem;
         }
 
         .book-now-btn {
@@ -792,6 +865,33 @@
                 display: block;
             }
 
+            /* Mobile Dropdown Styles */
+            .dropdown-content {
+                position: static;
+                box-shadow: none;
+                margin-top: 0;
+                background: rgba(74, 124, 89, 0.05);
+                border-radius: 5px;
+                margin-left: 1rem;
+            }
+
+            .dropdown > a::after {
+                content: ' ▼';
+            }
+
+            .dropdown:hover .dropdown-content {
+                display: none;
+            }
+
+            .dropdown.active .dropdown-content {
+                display: block;
+            }
+
+            .dropdown > a {
+                display: block;
+                width: 100%;
+            }
+
             .hero h1 {
                 font-size: 3rem;
             }
@@ -863,8 +963,14 @@
                 <li><a href="#rooms">Suites</a></li>
                 <li><a href="#activities">Activities</a></li>
                 <li><a href="#dining">Dining</a></li>
-                <li><a href="#location">Location</a></li>
-                <li><a href="#contact" class="book-now-btn">Contact Us</a></li>
+                <li class="dropdown">
+                    <a href="#" onclick="return false;">More</a>
+                    <div class="dropdown-content">
+                        <a href="#policies">Policies & Guidelines</a>
+                        <a href="#location">Location</a>
+                        <a href="#contact">Contact Us</a>
+                    </div>
+                </li>
             </ul>
         </nav>
     </header>
@@ -1096,6 +1202,179 @@
         </div>
     </section>
 
+    <!-- Policies & Guidelines Section -->
+    <section class="intro-section" id="policies">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-label">Guest Information</p>
+                <h2 class="section-title">Policies & Guidelines</h2>
+                <p class="section-description">
+                    To ensure a pleasant stay for all our guests, please review our policies and guidelines.
+                </p>
+            </div>
+
+            <div style="max-width: 900px; margin: 0 auto;">
+                
+                <!-- Download Button -->
+                <div style="text-align: center; margin-bottom: 3rem;">
+                    <a href="#" onclick="alert('Please contact us at theriveroots@gmail.com or +91 94471 48461 to receive our complete Policies & Guidelines PDF'); return false;" 
+                       style="display: inline-block; padding: 1rem 2.5rem; background: var(--accent-blue); color: white; text-decoration: none; border-radius: 5px; font-weight: 600; font-size: 1.1rem; transition: all 0.3s ease;">
+                        📄 Download Complete Rules & Regulations PDF
+                    </a>
+                </div>
+
+                <!-- Check-in & Check-out -->
+                <div style="background: var(--white); padding: 2.5rem; border-radius: 10px; margin-bottom: 2rem; box-shadow: 0 5px 20px rgba(0,0,0,0.05);">
+                    <h3 style="color: var(--primary-green); font-size: 1.8rem; margin-bottom: 1.5rem;">⏰ Check-in & Check-out</h3>
+                    <ul style="list-style: none; font-size: 1.1rem; line-height: 2;">
+                        <li style="padding: 0.5rem 0; padding-left: 2rem; position: relative;">
+                            <span style="position: absolute; left: 0; color: var(--secondary-green);">✓</span>
+                            <strong>Check-in:</strong> 2:00 PM onwards
+                        </li>
+                        <li style="padding: 0.5rem 0; padding-left: 2rem; position: relative;">
+                            <span style="position: absolute; left: 0; color: var(--secondary-green);">✓</span>
+                            <strong>Check-out:</strong> 11:00 AM
+                        </li>
+                        <li style="padding: 0.5rem 0; padding-left: 2rem; position: relative;">
+                            <span style="position: absolute; left: 0; color: var(--secondary-green);">✓</span>
+                            Please respect check-in and check-out times
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Homestay Rules -->
+                <div style="background: var(--white); padding: 2.5rem; border-radius: 10px; margin-bottom: 2rem; box-shadow: 0 5px 20px rgba(0,0,0,0.05);">
+                    <h3 style="color: var(--primary-green); font-size: 1.8rem; margin-bottom: 1.5rem;">🏠 Homestay Rules</h3>
+                    <ul style="list-style: none; font-size: 1.1rem; line-height: 2;">
+                        <li style="padding: 0.5rem 0; padding-left: 2rem; position: relative;">
+                            <span style="position: absolute; left: 0; color: var(--secondary-green);">✓</span>
+                            🚭 No smoking inside the rooms
+                        </li>
+                        <li style="padding: 0.5rem 0; padding-left: 2rem; position: relative;">
+                            <span style="position: absolute; left: 0; color: var(--secondary-green);">✓</span>
+                            🐾 No pets allowed on furniture
+                        </li>
+                        <li style="padding: 0.5rem 0; padding-left: 2rem; position: relative;">
+                            <span style="position: absolute; left: 0; color: var(--secondary-green);">✓</span>
+                            💰 Any material damage by guests will be charged
+                        </li>
+                        <li style="padding: 0.5rem 0; padding-left: 2rem; position: relative;">
+                            <span style="position: absolute; left: 0; color: var(--secondary-green);">✓</span>
+                            ⚡ Please switch off geyser and AC when not in use
+                        </li>
+                        <li style="padding: 0.5rem 0; padding-left: 2rem; position: relative;">
+                            <span style="position: absolute; left: 0; color: var(--secondary-green);">✓</span>
+                            🗑️ Please dispose waste in dustbins or contact caretaker
+                        </li>
+                        <li style="padding: 0.5rem 0; padding-left: 2rem; position: relative;">
+                            <span style="position: absolute; left: 0; color: var(--secondary-green);">✓</span>
+                            💊 No illegal substances allowed on premises
+                        </li>
+                        <li style="padding: 0.5rem 0; padding-left: 2rem; position: relative;">
+                            <span style="position: absolute; left: 0; color: var(--secondary-green);">✓</span>
+                            📹 Common areas are under surveillance for your security
+                        </li>
+                        <li style="padding: 0.5rem 0; padding-left: 2rem; position: relative;">
+                            <span style="position: absolute; left: 0; color: var(--secondary-green);">✓</span>
+                            🛋️ Please don't rearrange the furniture
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Guest Requirements -->
+                <div style="background: var(--white); padding: 2.5rem; border-radius: 10px; margin-bottom: 2rem; box-shadow: 0 5px 20px rgba(0,0,0,0.05);">
+                    <h3 style="color: var(--primary-green); font-size: 1.8rem; margin-bottom: 1.5rem;">🪪 Guest Requirements</h3>
+                    <ul style="list-style: none; font-size: 1.1rem; line-height: 2;">
+                        <li style="padding: 0.5rem 0; padding-left: 2rem; position: relative;">
+                            <span style="position: absolute; left: 0; color: var(--secondary-green);">✓</span>
+                            Valid government-issued photo ID is mandatory at check-in
+                        </li>
+                        <li style="padding: 0.5rem 0; padding-left: 2rem; position: relative;">
+                            <span style="position: absolute; left: 0; color: var(--secondary-green);">✓</span>
+                            👥 No unregistered guests allowed
+                        </li>
+                        <li style="padding: 0.5rem 0; padding-left: 2rem; position: relative;">
+                            <span style="position: absolute; left: 0; color: var(--secondary-green);">✓</span>
+                            👶 Children should always be supervised, especially near water
+                        </li>
+                        <li style="padding: 0.5rem 0; padding-left: 2rem; position: relative;">
+                            <span style="position: absolute; left: 0; color: var(--secondary-green);">✓</span>
+                            🔧 Please inform us immediately if something is malfunctioning
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Dining Information -->
+                <div style="background: var(--white); padding: 2.5rem; border-radius: 10px; margin-bottom: 2rem; box-shadow: 0 5px 20px rgba(0,0,0,0.05);">
+                    <h3 style="color: var(--primary-green); font-size: 1.8rem; margin-bottom: 1.5rem;">🍛 Dining Information</h3>
+                    <ul style="list-style: none; font-size: 1.1rem; line-height: 2;">
+                        <li style="padding: 0.5rem 0; padding-left: 2rem; position: relative;">
+                            <span style="position: absolute; left: 0; color: var(--secondary-green);">✓</span>
+                            <strong>Breakfast:</strong> 8:30 AM – 10:00 AM (included in stay)
+                        </li>
+                        <li style="padding: 0.5rem 0; padding-left: 2rem; position: relative;">
+                            <span style="position: absolute; left: 0; color: var(--secondary-green);">✓</span>
+                            <strong>Lunch:</strong> 1:00 PM – 2:00 PM
+                        </li>
+                        <li style="padding: 0.5rem 0; padding-left: 2rem; position: relative;">
+                            <span style="position: absolute; left: 0; color: var(--secondary-green);">✓</span>
+                            <strong>Dinner:</strong> 7:00 PM – 10:00 PM
+                        </li>
+                        <li style="padding: 0.5rem 0; padding-left: 2rem; position: relative;">
+                            <span style="position: absolute; left: 0; color: var(--secondary-green);">✓</span>
+                            <strong>Note:</strong> Advance booking required for lunch and dinner
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Nature & Environment -->
+                <div style="background: var(--white); padding: 2.5rem; border-radius: 10px; margin-bottom: 2rem; box-shadow: 0 5px 20px rgba(0,0,0,0.05);">
+                    <h3 style="color: var(--primary-green); font-size: 1.8rem; margin-bottom: 1.5rem;">🌿 Nature & Environment Guidelines</h3>
+                    <ul style="list-style: none; font-size: 1.1rem; line-height: 2;">
+                        <li style="padding: 0.5rem 0; padding-left: 2rem; position: relative;">
+                            <span style="position: absolute; left: 0; color: var(--secondary-green);">✓</span>
+                            🗑️ Please do not litter on premises or in the river
+                        </li>
+                        <li style="padding: 0.5rem 0; padding-left: 2rem; position: relative;">
+                            <span style="position: absolute; left: 0; color: var(--secondary-green);">✓</span>
+                            🐾 Do not harm plants and animals
+                        </li>
+                        <li style="padding: 0.5rem 0; padding-left: 2rem; position: relative;">
+                            <span style="position: absolute; left: 0; color: var(--secondary-green);">✓</span>
+                            🐟 Please do not catch fish without permission
+                        </li>
+                        <li style="padding: 0.5rem 0; padding-left: 2rem; position: relative;">
+                            <span style="position: absolute; left: 0; color: var(--secondary-green);">✓</span>
+                            🌊 Use the river only after permission from staff
+                        </li>
+                        <li style="padding: 0.5rem 0; padding-left: 2rem; position: relative;">
+                            <span style="position: absolute; left: 0; color: var(--secondary-green);">✓</span>
+                            🔇 No noise between 10:00 PM – 7:00 AM
+                        </li>
+                        <li style="padding: 0.5rem 0; padding-left: 2rem; position: relative;">
+                            <span style="position: absolute; left: 0; color: var(--secondary-green);">✓</span>
+                            🚗 Park your vehicles responsibly
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Thank You Message -->
+                <div style="background: rgba(74, 124, 89, 0.1); padding: 2.5rem; border-radius: 10px; border-left: 4px solid var(--secondary-green); text-align: center;">
+                    <p style="font-size: 1.2rem; line-height: 1.8; color: var(--text-dark); margin-bottom: 1rem;">
+                        <strong>"Nature does not hurry, yet everything is accomplished."</strong><br>
+                        <em>— Lao Tzu</em>
+                    </p>
+                    <p style="font-size: 1.1rem; color: var(--primary-green); margin-top: 1.5rem;">
+                        <strong>We appreciate your patience and understanding ❤️</strong>
+                    </p>
+                    <p style="font-size: 1rem; color: var(--text-dark); margin-top: 1rem;">
+                        Thank you for being here 🌴
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Location Section -->
     <section class="location-section" id="location">
         <div class="container">
@@ -1141,7 +1420,7 @@
 
                     <ul class="contact-details">
                         <li><strong>Phone:</strong> <a href="tel:+919447148461">+91 94471 48461</a></li>
-                        <li><strong>Email:</strong> <a href="/cdn-cgi/l/email-protection#fb8f939e89928d9e8994948f88bb9c969a9297d5989496"><span class="__cf_email__" data-cfemail="b3c7dbd6c1dac5d6c1dcdcc7c0f3d4ded2dadf9dd0dcde">[email&#160;protected]</span></a></li>
+                        <li><strong>Email:</strong> <a href="/cdn-cgi/l/email-protection#45312d20372c3320372a2a3136052228242c296b262a28"><span class="__cf_email__" data-cfemail="e6928e83948f90839489899295a6818b878f8ac885898b">[email&#160;protected]</span></a></li>
                         <li><strong>Location:</strong> Kumbalangi, Kerala, India</li>
                         <li><strong>Website:</strong> <a href="https://theriveroots.in">theriveroots.in</a></li>
                     </ul>
@@ -1212,7 +1491,7 @@
         </div>
     </footer>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         // Smooth scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -1264,6 +1543,20 @@
                     toggleMenu();
                 });
             }
+
+            // Mobile dropdown toggle
+            const dropdown = document.querySelector('.dropdown');
+            if (dropdown) {
+                const dropdownLink = dropdown.querySelector('a');
+                if (dropdownLink) {
+                    dropdownLink.addEventListener('click', function(e) {
+                        if (window.innerWidth <= 968) {
+                            e.preventDefault();
+                            dropdown.classList.toggle('active');
+                        }
+                    });
+                }
+            }
         });
 
         // Form submission
@@ -1277,10 +1570,3 @@
             
             // Reset form
             form.reset();
-            
-            // Hide success message after 5 seconds
-            setTimeout(() => {
-                document.getElementById('successMessage').classList.remove('show');
-            }, 5000);
-            
-            // Log form data (for developm
