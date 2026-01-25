@@ -984,6 +984,7 @@
                 <li><a href="#rooms">Suites</a></li>
                 <li><a href="#activities">Activities</a></li>
                 <li><a href="#dining">Dining</a></li>
+                <li><a href="#gallery">Gallery</a></li>
                 <li class="dropdown">
                     <a href="#" onclick="return false;">More</a>
                     <div class="dropdown-content">
@@ -1222,6 +1223,40 @@
         </div>
     </section>
 
+    <!-- Gallery Section -->
+    <section class="features-section" id="gallery">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-label">Our Property</p>
+                <h2 class="section-title">Photo Gallery</h2>
+                <p class="section-description">
+                    Take a visual tour of The Riveroots and discover the natural beauty and comfort that awaits you.
+                </p>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-top: 3rem;">
+                <div style="height: 300px; background: var(--off-white); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: var(--text-dark); font-size: 1.1rem;">
+                    Gallery Photo 1
+                </div>
+                <div style="height: 300px; background: var(--off-white); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: var(--text-dark); font-size: 1.1rem;">
+                    Gallery Photo 2
+                </div>
+                <div style="height: 300px; background: var(--off-white); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: var(--text-dark); font-size: 1.1rem;">
+                    Gallery Photo 3
+                </div>
+                <div style="height: 300px; background: var(--off-white); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: var(--text-dark); font-size: 1.1rem;">
+                    Gallery Photo 4
+                </div>
+                <div style="height: 300px; background: var(--off-white); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: var(--text-dark); font-size: 1.1rem;">
+                    Gallery Photo 5
+                </div>
+                <div style="height: 300px; background: var(--off-white); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: var(--text-dark); font-size: 1.1rem;">
+                    Gallery Photo 6
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Policies & Guidelines Section -->
     <section class="intro-section" id="policies">
         <div class="container">
@@ -1440,7 +1475,7 @@
 
                     <ul class="contact-details">
                         <li><strong>Phone:</strong> <a href="tel:+919447148461">+91 94471 48461</a></li>
-                        <li><strong>Email:</strong> <a href="mailto:theriveroots@gmail.com">theriveroots@gmail.com</a></li>
+                        <li><strong>Email:</strong> <a href="/cdn-cgi/l/email-protection#4e3a262b3c27382b3c21213a3d0e29232f2722602d2123"><span class="__cf_email__" data-cfemail="b9cdd1dccbd0cfdccbd6d6cdcaf9ded4d8d0d597dad6d4">[email&#160;protected]</span></a></li>
                         <li><strong>Location:</strong> Kumbalangi, Kerala, India</li>
                         <li><strong>Website:</strong> <a href="https://theriveroots.in">theriveroots.in</a></li>
                     </ul>
@@ -1511,7 +1546,7 @@
         </div>
     </footer>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         // Smooth scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -1601,10 +1636,4 @@
         }
 
         // Header scroll effect
-        let lastScroll = 0;
-        window.addEventListener('scroll', () => {
-            const header = document.querySelector('header');
-            const currentScroll = window.pageYOffset;
-            
-            if (currentScroll > 100) {
-                header.s
+        let lastScro
