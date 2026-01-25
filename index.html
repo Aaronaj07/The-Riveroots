@@ -217,11 +217,22 @@
             background-size: cover;
             background-position: center;
             display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
+            align-items: flex-start;
+            justify-content: flex-start;
+            padding-top: 150px;
+            padding-left: 5%;
+            text-align: left;
             color: var(--white);
             position: relative;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            padding: 3rem 4rem;
+            z-index: 2;
+            background: rgba(109, 115, 94, 0.85);
+            backdrop-filter: blur(10px);
+            border-radius: 10px;
         }
 
         .hero-content {
@@ -896,6 +907,16 @@
                 font-size: 3rem;
             }
 
+            .hero {
+                padding-left: 5%;
+                padding-right: 5%;
+            }
+
+            .hero-content {
+                padding: 2rem;
+                max-width: 100%;
+            }
+
             .section-title {
                 font-size: 2.2rem;
             }
@@ -932,6 +953,14 @@
         @media (max-width: 640px) {
             .hero h1 {
                 font-size: 2.2rem;
+            }
+
+            .hero {
+                padding-top: 120px;
+            }
+
+            .hero-content {
+                padding: 1.5rem;
             }
 
             .section-title {
@@ -1016,8 +1045,7 @@
                         <a href="#rooms" class="btn-secondary">Our Suites</a>
                     </div>
                 </div>
-                <div class="intro-image">
-                    Your Beautiful Waterfront Property Image Here
+                <div class="intro-image" style="background-image: url('Front_water_view.jpg'); background-size: cover; background-position: center;">
                 </div>
             </div>
         </div>
@@ -1074,7 +1102,7 @@
             </p>
 
             <div class="room-card">
-                <div class="room-image">Riverside Suite One - Photo</div>
+                <div class="room-image" style="background-image: url('R1_Website.jpg'); background-size: cover; background-position: center;"></div>
                 <div class="room-content">
                     <h3>Riverside Suite One</h3>
                     <p>
@@ -1083,7 +1111,8 @@
                         for couples or solo travelers seeking a peaceful waterfront retreat.
                     </p>
                     <ul class="room-amenities">
-                        <li>Queen-size comfortable bed</li>
+                        <li>King-size comfortable bed</li>
+                        <li>Sofa-Bed</li>
                         <li>Attached private bathroom</li>
                         <li>Stunning river views</li>
                         <li>Independent entrance</li>
@@ -1094,7 +1123,7 @@
             </div>
 
             <div class="room-card">
-                <div class="room-image">Riverside Suite Two - Photo</div>
+                <div class="room-image" style="background-image: url('R2_Website.jpg'); background-size: cover; background-position: center;"></div>
                 <div class="room-content">
                     <h3>Riverside Suite Two</h3>
                     <p>
@@ -1103,7 +1132,7 @@
                         perfect for relaxation and rejuvenation.
                     </p>
                     <ul class="room-amenities">
-                        <li>Queen-size comfortable bed</li>
+                        <li>King-size comfortable bed</li>
                         <li>Attached private bathroom</li>
                         <li>Garden and nature views</li>
                         <li>Independent entrance</li>
@@ -1420,7 +1449,7 @@
 
                     <ul class="contact-details">
                         <li><strong>Phone:</strong> <a href="tel:+919447148461">+91 94471 48461</a></li>
-                        <li><strong>Email:</strong> <a href="/cdn-cgi/l/email-protection#45312d20372c3320372a2a3136052228242c296b262a28"><span class="__cf_email__" data-cfemail="e6928e83948f90839489899295a6818b878f8ac885898b">[email&#160;protected]</span></a></li>
+                        <li><strong>Email:</strong> <a href="/cdn-cgi/l/email-protection#3b4f535e49524d5e4954544f487b5c565a525715585456"><span class="__cf_email__" data-cfemail="65110d00170c1300170a0a1116250208040c094b060a08">[email&#160;protected]</span></a></li>
                         <li><strong>Location:</strong> Kumbalangi, Kerala, India</li>
                         <li><strong>Website:</strong> <a href="https://theriveroots.in">theriveroots.in</a></li>
                     </ul>
@@ -1491,7 +1520,7 @@
         </div>
     </footer>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         // Smooth scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -1570,3 +1599,21 @@
             
             // Reset form
             form.reset();
+                    
+            // Hide success message after 5 seconds
+            setTimeout(() => {
+                document.getElementById('successMessage').classList.remove('show');
+            }, 5000);
+            
+            // Log form data (for development)
+            console.log('Form submitted:', Object.fromEntries(formData));
+        }
+
+        // Header scroll effect
+        let lastScroll = 0;
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll > 100) {
+                header.s
