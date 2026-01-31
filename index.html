@@ -1188,13 +1188,13 @@
                             <div class="room-gallery-slide" style="background-image: url('resort_27.jpg');"></div>
                             <div class="room-gallery-slide" style="background-image: url('resort-1.jpg');"></div>
                         </div>
-                        <button class="room-gallery-nav room-gallery-prev" onclick="moveSlide('gallery-suite1', -1)">‹</button>
-                        <button class="room-gallery-nav room-gallery-next" onclick="moveSlide('gallery-suite1', 1)">›</button>
+                        <button class="room-gallery-nav room-gallery-prev" onclick="moveSuite1(-1)">‹</button>
+                        <button class="room-gallery-nav room-gallery-next" onclick="moveSuite1(1)">›</button>
                         <div class="room-gallery-indicators">
-                            <button class="room-gallery-indicator active" onclick="setSlide('gallery-suite1', 0)"></button>
-                            <button class="room-gallery-indicator" onclick="setSlide('gallery-suite1', 1)"></button>
-                            <button class="room-gallery-indicator" onclick="setSlide('gallery-suite1', 2)"></button>
-                            <button class="room-gallery-indicator" onclick="setSlide('gallery-suite1', 3)"></button>
+                            <button class="room-gallery-indicator active" onclick="setSuite1(0)"></button>
+                            <button class="room-gallery-indicator" onclick="setSuite1(1)"></button>
+                            <button class="room-gallery-indicator" onclick="setSuite1(2)"></button>
+                            <button class="room-gallery-indicator" onclick="setSuite1(3)"></button>
                         </div>
                     </div>
                 </div>
@@ -1226,13 +1226,13 @@
                             <div class="room-gallery-slide" style="background-image: url('resort_2.jpg');"></div>
                             <div class="room-gallery-slide" style="background-image: url('resort-1.jpg');"></div>
                         </div>
-                        <button class="room-gallery-nav room-gallery-prev" onclick="moveSlide('gallery-suite2', -1)">‹</button>
-                        <button class="room-gallery-nav room-gallery-next" onclick="moveSlide('gallery-suite2', 1)">›</button>
+                        <button class="room-gallery-nav room-gallery-prev" onclick="moveSuite2(-1)">‹</button>
+                        <button class="room-gallery-nav room-gallery-next" onclick="moveSuite2(1)">›</button>
                         <div class="room-gallery-indicators">
-                            <button class="room-gallery-indicator active" onclick="setSlide('gallery-suite2', 0)"></button>
-                            <button class="room-gallery-indicator" onclick="setSlide('gallery-suite2', 1)"></button>
-                            <button class="room-gallery-indicator" onclick="setSlide('gallery-suite2', 2)"></button>
-                            <button class="room-gallery-indicator" onclick="setSlide('gallery-suite2', 3)"></button>
+                            <button class="room-gallery-indicator active" onclick="setSuite2(0)"></button>
+                            <button class="room-gallery-indicator" onclick="setSuite2(1)"></button>
+                            <button class="room-gallery-indicator" onclick="setSuite2(2)"></button>
+                            <button class="room-gallery-indicator" onclick="setSuite2(3)"></button>
                         </div>
                     </div>
                 </div>
@@ -1753,118 +1753,73 @@
             console.log('Form submitted:', Object.fromEntries(formData));
         }
 
-        // Room Gallery Slider - Global functions
-        window.galleryStates = {};
+        // Room Gallery Slider - Simple and Reliable
+        var suite1Current = 0;
+        var suite2Current = 0;
+        var suite1Total = 4;
+        var suite2Total = 4;
 
-        window.initGallery = function(galleryId) {
-            if (!window.galleryStates[galleryId]) {
-                window.galleryStates[galleryId] = { currentSlide: 0 };
-            }
+        function moveSuite1(direction) {
+            suite1Current = suite1Current + direction;
+            if (suite1Current < 0) suite1Current = suite1Total - 1;
+            if (suite1Current >= suite1Total) suite1Current = 0;
+            updateSuite1();
         }
 
-        window.moveSlide = function(galleryId, direction) {
-            try {
-                window.initGallery(galleryId);
-                const gallery = document.getElementById(galleryId);
-                if (!gallery) {
-                    console.error('Gallery not found:', galleryId);
-                    return;
-                }
-                const slides = gallery.querySelector('.room-gallery-slides');
-                const totalSlides = slides.children.length;
-                
-                window.galleryStates[galleryId].currentSlide += direction;
-                
-                if (window.galleryStates[galleryId].currentSlide < 0) {
-                    window.galleryStates[galleryId].currentSlide = totalSlides - 1;
-                } else if (window.galleryStates[galleryId].currentSlide >= totalSlides) {
-                    window.galleryStates[galleryId].currentSlide = 0;
-                }
-                
-                window.updateGallery(galleryId);
-            } catch (error) {
-                console.error('Error in moveSlide:', error);
-            }
+        function moveSuite2(direction) {
+            suite2Current = suite2Current + direction;
+            if (suite2Current < 0) suite2Current = suite2Total - 1;
+            if (suite2Current >= suite2Total) suite2Current = 0;
+            updateSuite2();
         }
 
-        window.setSlide = function(galleryId, index) {
-            try {
-                window.initGallery(galleryId);
-                window.galleryStates[galleryId].currentSlide = index;
-                window.updateGallery(galleryId);
-            } catch (error) {
-                console.error('Error in setSlide:', error);
-            }
+        function setSuite1(index) {
+            suite1Current = index;
+            updateSuite1();
         }
 
-        window.updateGallery = function(galleryId) {
-            try {
-                const gallery = document.getElementById(galleryId);
-                if (!gallery) return;
-                
-                const slides = gallery.querySelector('.room-gallery-slides');
-                const indicators = gallery.querySelectorAll('.room-gallery-indicator');
-                const currentSlide = window.galleryStates[galleryId].currentSlide;
-                
-                slides.style.transform = `translateX(-${currentSlide * 100}%)`;
-                
-                indicators.forEach((indicator, index) => {
-                    if (index === currentSlide) {
-                        indicator.classList.add('active');
+        function setSuite2(index) {
+            suite2Current = index;
+            updateSuite2();
+        }
+
+        function updateSuite1() {
+            var slides = document.querySelector('#gallery-suite1 .room-gallery-slides');
+            var indicators = document.querySelectorAll('#gallery-suite1 .room-gallery-indicator');
+            
+            if (slides) {
+                slides.style.transform = 'translateX(-' + (suite1Current * 100) + '%)';
+            }
+            
+            if (indicators) {
+                for (var i = 0; i < indicators.length; i++) {
+                    if (i === suite1Current) {
+                        indicators[i].classList.add('active');
                     } else {
-                        indicator.classList.remove('active');
+                        indicators[i].classList.remove('active');
                     }
-                });
-            } catch (error) {
-                console.error('Error in updateGallery:', error);
+                }
             }
         }
 
-        // Initialize galleries on page load
-        document.addEventListener('DOMContentLoaded', function() {
-            console.log('Initializing galleries...');
-            window.initGallery('gallery-suite1');
-            window.initGallery('gallery-suite2');
+        function updateSuite2() {
+            var slides = document.querySelector('#gallery-suite2 .room-gallery-slides');
+            var indicators = document.querySelectorAll('#gallery-suite2 .room-gallery-indicator');
             
-            // Add event listeners to navigation buttons as backup
-            const galleries = ['gallery-suite1', 'gallery-suite2'];
-            galleries.forEach(function(galleryId) {
-                const gallery = document.getElementById(galleryId);
-                if (gallery) {
-                    // Previous button
-                    const prevBtn = gallery.querySelector('.room-gallery-prev');
-                    if (prevBtn) {
-                        prevBtn.addEventListener('click', function(e) {
-                            e.preventDefault();
-                            console.log('Prev clicked for', galleryId);
-                            window.moveSlide(galleryId, -1);
-                        });
+            if (slides) {
+                slides.style.transform = 'translateX(-' + (suite2Current * 100) + '%)';
+            }
+            
+            if (indicators) {
+                for (var i = 0; i < indicators.length; i++) {
+                    if (i === suite2Current) {
+                        indicators[i].classList.add('active');
+                    } else {
+                        indicators[i].classList.remove('active');
                     }
-                    
-                    // Next button
-                    const nextBtn = gallery.querySelector('.room-gallery-next');
-                    if (nextBtn) {
-                        nextBtn.addEventListener('click', function(e) {
-                            e.preventDefault();
-                            console.log('Next clicked for', galleryId);
-                            window.moveSlide(galleryId, 1);
-                        });
-                    }
-                    
-                    // Indicator buttons
-                    const indicators = gallery.querySelectorAll('.room-gallery-indicator');
-                    indicators.forEach(function(indicator, index) {
-                        indicator.addEventListener('click', function(e) {
-                            e.preventDefault();
-                            console.log('Indicator', index, 'clicked for', galleryId);
-                            window.setSlide(galleryId, index);
-                        });
-                    });
                 }
-            });
-            
-            console.log('Galleries initialized successfully');
-        });
+            }
+        }
 
         // Header scroll effect
         let lastScro
