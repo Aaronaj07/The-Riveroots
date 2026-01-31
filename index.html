@@ -1352,31 +1352,16 @@
                 </p>
             </div>
 
-            <div style="position: relative; max-width: 1200px; margin: 3rem auto; overflow: hidden;">
-                <!-- Slider Container -->
-                <div class="gallery-slider" id="gallerySlider" style="display: flex; transition: transform 0.5s ease-in-out;">
-                    <div style="min-width: 100%; height: 500px; background-image: url('resort_27.jpg'); background-size: cover; background-position: center; border-radius: 10px;"></div>
-                    <div style="min-width: 100%; height: 500px; background-image: url('resort_30.jpg'); background-size: cover; background-position: center; border-radius: 10px;"></div>
-                    <div style="min-width: 100%; height: 500px; background-image: url('resort-1.jpg'); background-size: cover; background-position: center; border-radius: 10px;"></div>
-                    <div style="min-width: 100%; height: 500px; background-image: url('Entrance_Board.png'); background-size: cover; background-position: center; border-radius: 10px;"></div>
-                    <div style="min-width: 100%; height: 500px; background-image: url('Front_water_view.jpg'); background-size: cover; background-position: center; border-radius: 10px;"></div>
-                    <div style="min-width: 100%; height: 500px; background-image: url('Traditional_food.jpg'); background-size: cover; background-position: center; border-radius: 10px;"></div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-top: 3rem;">
+                <div style="height: 300px; background-image: url('resort_7.jpg'); background-size: cover; background-position: center; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);"></div>
+                <div style="height: 300px; background-image: url('resort_32.jpg'); background-size: cover; background-position: center; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);"></div>
+                <div style="height: 300px; background-image: url('resort_62.jpg'); background-size: cover; background-position: center; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);"></div>
+                <div style="height: 300px; background-image: url('resort_3.jpg'); background-size: cover; background-position: center; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);"></div>
+                <div style="height: 300px; background: var(--off-white); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: var(--text-dark); font-size: 1.1rem;">
+                    Gallery Photo 5
                 </div>
-
-                <!-- Previous Button -->
-                <button onclick="moveSlide(-1)" style="position: absolute; top: 50%; left: 20px; transform: translateY(-50%); background: rgba(255,255,255,0.9); border: none; width: 50px; height: 50px; border-radius: 50%; cursor: pointer; font-size: 1.5rem; box-shadow: 0 5px 15px rgba(0,0,0,0.2); z-index: 10; transition: all 0.3s ease;" onmouseover="this.style.background='white'" onmouseout="this.style.background='rgba(255,255,255,0.9)'">‹</button>
-
-                <!-- Next Button -->
-                <button onclick="moveSlide(1)" style="position: absolute; top: 50%; right: 20px; transform: translateY(-50%); background: rgba(255,255,255,0.9); border: none; width: 50px; height: 50px; border-radius: 50%; cursor: pointer; font-size: 1.5rem; box-shadow: 0 5px 15px rgba(0,0,0,0.2); z-index: 10; transition: all 0.3s ease;" onmouseover="this.style.background='white'" onmouseout="this.style.background='rgba(255,255,255,0.9)'">›</button>
-
-                <!-- Dots/Indicators -->
-                <div style="text-align: center; margin-top: 1.5rem;">
-                    <span onclick="goToSlide(0)" class="slider-dot" style="display: inline-block; width: 12px; height: 12px; background: var(--primary-green); border-radius: 50%; margin: 0 5px; cursor: pointer; transition: all 0.3s ease;"></span>
-                    <span onclick="goToSlide(1)" class="slider-dot" style="display: inline-block; width: 12px; height: 12px; background: #ccc; border-radius: 50%; margin: 0 5px; cursor: pointer; transition: all 0.3s ease;"></span>
-                    <span onclick="goToSlide(2)" class="slider-dot" style="display: inline-block; width: 12px; height: 12px; background: #ccc; border-radius: 50%; margin: 0 5px; cursor: pointer; transition: all 0.3s ease;"></span>
-                    <span onclick="goToSlide(3)" class="slider-dot" style="display: inline-block; width: 12px; height: 12px; background: #ccc; border-radius: 50%; margin: 0 5px; cursor: pointer; transition: all 0.3s ease;"></span>
-                    <span onclick="goToSlide(4)" class="slider-dot" style="display: inline-block; width: 12px; height: 12px; background: #ccc; border-radius: 50%; margin: 0 5px; cursor: pointer; transition: all 0.3s ease;"></span>
-                    <span onclick="goToSlide(5)" class="slider-dot" style="display: inline-block; width: 12px; height: 12px; background: #ccc; border-radius: 50%; margin: 0 5px; cursor: pointer; transition: all 0.3s ease;"></span>
+                <div style="height: 300px; background: var(--off-white); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: var(--text-dark); font-size: 1.1rem;">
+                    Gallery Photo 6
                 </div>
             </div>
         </div>
