@@ -496,6 +496,85 @@
             justify-content: center;
             color: var(--white);
             font-size: 1.1rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .room-gallery {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .room-gallery-slides {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            height: 100%;
+        }
+
+        .room-gallery-slide {
+            min-width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .room-gallery-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: var(--primary-green);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+            transition: all 0.3s ease;
+        }
+
+        .room-gallery-nav:hover {
+            background: white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .room-gallery-prev {
+            left: 10px;
+        }
+
+        .room-gallery-next {
+            right: 10px;
+        }
+
+        .room-gallery-indicators {
+            position: absolute;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+            z-index: 10;
+        }
+
+        .room-gallery-indicator {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .room-gallery-indicator.active {
+            background: white;
+            width: 25px;
+            border-radius: 5px;
         }
 
         .room-content h3 {
@@ -1096,7 +1175,24 @@
             </p>
 
             <div class="room-card">
-                <div class="room-image" style="background-image: url('R1_Website.jpg'); background-size: cover; background-position: center;"></div>
+                <div class="room-image">
+                    <div class="room-gallery" id="gallery-suite1">
+                        <div class="room-gallery-slides">
+                            <div class="room-gallery-slide" style="background-image: url('R1_Website.jpg');"></div>
+                            <div class="room-gallery-slide" style="background-image: url('resort_30.jpg');"></div>
+                            <div class="room-gallery-slide" style="background-image: url('resort_27.jpg');"></div>
+                            <div class="room-gallery-slide" style="background-image: url('resort-1.jpg');"></div>
+                        </div>
+                        <button class="room-gallery-nav room-gallery-prev" onclick="moveSlide('gallery-suite1', -1)">‹</button>
+                        <button class="room-gallery-nav room-gallery-next" onclick="moveSlide('gallery-suite1', 1)">›</button>
+                        <div class="room-gallery-indicators">
+                            <button class="room-gallery-indicator active" onclick="setSlide('gallery-suite1', 0)"></button>
+                            <button class="room-gallery-indicator" onclick="setSlide('gallery-suite1', 1)"></button>
+                            <button class="room-gallery-indicator" onclick="setSlide('gallery-suite1', 2)"></button>
+                            <button class="room-gallery-indicator" onclick="setSlide('gallery-suite1', 3)"></button>
+                        </div>
+                    </div>
+                </div>
                 <div class="room-content">
                     <h3>Riverside Suite One</h3>
                     <p>
@@ -1117,7 +1213,24 @@
             </div>
 
             <div class="room-card">
-                <div class="room-image" style="background-image: url('R2_Website.jpg'); background-size: cover; background-position: center;"></div>
+                <div class="room-image">
+                    <div class="room-gallery" id="gallery-suite2">
+                        <div class="room-gallery-slides">
+                            <div class="room-gallery-slide" style="background-image: url('R2_Website.jpg');"></div>
+                            <div class="room-gallery-slide" style="background-image: url('resort_6.jpg');"></div>
+                            <div class="room-gallery-slide" style="background-image: url('resort_2.jpg');"></div>
+                            <div class="room-gallery-slide" style="background-image: url('resort-1.jpg');"></div>
+                        </div>
+                        <button class="room-gallery-nav room-gallery-prev" onclick="moveSlide('gallery-suite2', -1)">‹</button>
+                        <button class="room-gallery-nav room-gallery-next" onclick="moveSlide('gallery-suite2', 1)">›</button>
+                        <div class="room-gallery-indicators">
+                            <button class="room-gallery-indicator active" onclick="setSlide('gallery-suite2', 0)"></button>
+                            <button class="room-gallery-indicator" onclick="setSlide('gallery-suite2', 1)"></button>
+                            <button class="room-gallery-indicator" onclick="setSlide('gallery-suite2', 2)"></button>
+                            <button class="room-gallery-indicator" onclick="setSlide('gallery-suite2', 3)"></button>
+                        </div>
+                    </div>
+                </div>
                 <div class="room-content">
                     <h3>Riverside Suite Two</h3>
                     <p>
@@ -1634,6 +1747,61 @@
             // Log form data (for development)
             console.log('Form submitted:', Object.fromEntries(formData));
         }
+
+        // Room Gallery Slider
+        const galleryStates = {};
+
+        function initGallery(galleryId) {
+            if (!galleryStates[galleryId]) {
+                galleryStates[galleryId] = { currentSlide: 0 };
+            }
+        }
+
+        function moveSlide(galleryId, direction) {
+            initGallery(galleryId);
+            const gallery = document.getElementById(galleryId);
+            const slides = gallery.querySelector('.room-gallery-slides');
+            const totalSlides = slides.children.length;
+            
+            galleryStates[galleryId].currentSlide += direction;
+            
+            if (galleryStates[galleryId].currentSlide < 0) {
+                galleryStates[galleryId].currentSlide = totalSlides - 1;
+            } else if (galleryStates[galleryId].currentSlide >= totalSlides) {
+                galleryStates[galleryId].currentSlide = 0;
+            }
+            
+            updateGallery(galleryId);
+        }
+
+        function setSlide(galleryId, index) {
+            initGallery(galleryId);
+            galleryStates[galleryId].currentSlide = index;
+            updateGallery(galleryId);
+        }
+
+        function updateGallery(galleryId) {
+            const gallery = document.getElementById(galleryId);
+            const slides = gallery.querySelector('.room-gallery-slides');
+            const indicators = gallery.querySelectorAll('.room-gallery-indicator');
+            const currentSlide = galleryStates[galleryId].currentSlide;
+            
+            slides.style.transform = `translateX(-${currentSlide * 100}%)`;
+            
+            indicators.forEach((indicator, index) => {
+                if (index === currentSlide) {
+                    indicator.classList.add('active');
+                } else {
+                    indicator.classList.remove('active');
+                }
+            });
+        }
+
+        // Initialize galleries on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            initGallery('gallery-suite1');
+            initGallery('gallery-suite2');
+        });
 
         // Header scroll effect
         let lastScro
