@@ -1352,18 +1352,31 @@
                 </p>
             </div>
 
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-top: 3rem;">
-                <div style="height: 300px; background-image: url('resort_27.jpg'); background-size: cover; background-position: center; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);"></div>
-                <div style="height: 300px; background-image: url('resort_30.jpg'); background-size: cover; background-position: center; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);"></div>
-                <div style="height: 300px; background-image: url('resort-1.jpg'); background-size: cover; background-position: center; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);"></div>
-                <div style="height: 300px; background: var(--off-white); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: var(--text-dark); font-size: 1.1rem;">
-                    Gallery Photo 4
+            <div style="position: relative; max-width: 1200px; margin: 3rem auto; overflow: hidden;">
+                <!-- Slider Container -->
+                <div class="gallery-slider" id="gallerySlider" style="display: flex; transition: transform 0.5s ease-in-out;">
+                    <div style="min-width: 100%; height: 500px; background-image: url('resort_27.jpg'); background-size: cover; background-position: center; border-radius: 10px;"></div>
+                    <div style="min-width: 100%; height: 500px; background-image: url('resort_30.jpg'); background-size: cover; background-position: center; border-radius: 10px;"></div>
+                    <div style="min-width: 100%; height: 500px; background-image: url('resort-1.jpg'); background-size: cover; background-position: center; border-radius: 10px;"></div>
+                    <div style="min-width: 100%; height: 500px; background-image: url('Entrance_Board.png'); background-size: cover; background-position: center; border-radius: 10px;"></div>
+                    <div style="min-width: 100%; height: 500px; background-image: url('Front_water_view.jpg'); background-size: cover; background-position: center; border-radius: 10px;"></div>
+                    <div style="min-width: 100%; height: 500px; background-image: url('Traditional_food.jpg'); background-size: cover; background-position: center; border-radius: 10px;"></div>
                 </div>
-                <div style="height: 300px; background: var(--off-white); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: var(--text-dark); font-size: 1.1rem;">
-                    Gallery Photo 5
-                </div>
-                <div style="height: 300px; background: var(--off-white); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: var(--text-dark); font-size: 1.1rem;">
-                    Gallery Photo 6
+
+                <!-- Previous Button -->
+                <button onclick="moveSlide(-1)" style="position: absolute; top: 50%; left: 20px; transform: translateY(-50%); background: rgba(255,255,255,0.9); border: none; width: 50px; height: 50px; border-radius: 50%; cursor: pointer; font-size: 1.5rem; box-shadow: 0 5px 15px rgba(0,0,0,0.2); z-index: 10; transition: all 0.3s ease;" onmouseover="this.style.background='white'" onmouseout="this.style.background='rgba(255,255,255,0.9)'">‹</button>
+
+                <!-- Next Button -->
+                <button onclick="moveSlide(1)" style="position: absolute; top: 50%; right: 20px; transform: translateY(-50%); background: rgba(255,255,255,0.9); border: none; width: 50px; height: 50px; border-radius: 50%; cursor: pointer; font-size: 1.5rem; box-shadow: 0 5px 15px rgba(0,0,0,0.2); z-index: 10; transition: all 0.3s ease;" onmouseover="this.style.background='white'" onmouseout="this.style.background='rgba(255,255,255,0.9)'">›</button>
+
+                <!-- Dots/Indicators -->
+                <div style="text-align: center; margin-top: 1.5rem;">
+                    <span onclick="goToSlide(0)" class="slider-dot" style="display: inline-block; width: 12px; height: 12px; background: var(--primary-green); border-radius: 50%; margin: 0 5px; cursor: pointer; transition: all 0.3s ease;"></span>
+                    <span onclick="goToSlide(1)" class="slider-dot" style="display: inline-block; width: 12px; height: 12px; background: #ccc; border-radius: 50%; margin: 0 5px; cursor: pointer; transition: all 0.3s ease;"></span>
+                    <span onclick="goToSlide(2)" class="slider-dot" style="display: inline-block; width: 12px; height: 12px; background: #ccc; border-radius: 50%; margin: 0 5px; cursor: pointer; transition: all 0.3s ease;"></span>
+                    <span onclick="goToSlide(3)" class="slider-dot" style="display: inline-block; width: 12px; height: 12px; background: #ccc; border-radius: 50%; margin: 0 5px; cursor: pointer; transition: all 0.3s ease;"></span>
+                    <span onclick="goToSlide(4)" class="slider-dot" style="display: inline-block; width: 12px; height: 12px; background: #ccc; border-radius: 50%; margin: 0 5px; cursor: pointer; transition: all 0.3s ease;"></span>
+                    <span onclick="goToSlide(5)" class="slider-dot" style="display: inline-block; width: 12px; height: 12px; background: #ccc; border-radius: 50%; margin: 0 5px; cursor: pointer; transition: all 0.3s ease;"></span>
                 </div>
             </div>
         </div>
@@ -1816,4 +1829,67 @@
         }
 
         // Header scroll effect
-        let lastScro
+        let lastScroll = 0;
+
+        // Gallery Slider Functions
+        let currentSlide = 0;
+        const totalSlides = 6;
+
+        function moveSlide(direction) {
+            currentSlide += direction;
+            
+            if (currentSlide < 0) {
+                currentSlide = totalSlides - 1;
+            } else if (currentSlide >= totalSlides) {
+                currentSlide = 0;
+            }
+            
+            updateSlider();
+        }
+
+        function goToSlide(index) {
+            currentSlide = index;
+            updateSlider();
+        }
+
+        function updateSlider() {
+            const slider = document.getElementById('gallerySlider');
+            const dots = document.querySelectorAll('.slider-dot');
+            
+            if (slider) {
+                slider.style.transform = 'translateX(-' + (currentSlide * 100) + '%)';
+            }
+            
+            if (dots) {
+                dots.forEach(function(dot, index) {
+                    if (index === currentSlide) {
+                        dot.style.background = 'var(--primary-green)';
+                        dot.style.transform = 'scale(1.2)';
+                    } else {
+                        dot.style.background = '#ccc';
+                        dot.style.transform = 'scale(1)';
+                    }
+                });
+            }
+        }
+
+        // Auto-advance slider every 5 seconds
+        setInterval(function() {
+            moveSlide(1);
+        }, 5000);
+
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll > 100) {
+                header.style.boxShadow = '0 5px 20px rgba(0,0,0,0.1)';
+            } else {
+                header.style.boxShadow = '0 2px 10px rgba(0,0,0,0.05)';
+            }
+            
+            lastScroll = currentScroll;
+        });
+    </script>
+</body>
+</html>
