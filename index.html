@@ -1748,59 +1748,79 @@
             console.log('Form submitted:', Object.fromEntries(formData));
         }
 
-        // Room Gallery Slider
-        const galleryStates = {};
+        // Room Gallery Slider - Global functions
+        window.galleryStates = {};
 
-        function initGallery(galleryId) {
-            if (!galleryStates[galleryId]) {
-                galleryStates[galleryId] = { currentSlide: 0 };
+        window.initGallery = function(galleryId) {
+            if (!window.galleryStates[galleryId]) {
+                window.galleryStates[galleryId] = { currentSlide: 0 };
             }
         }
 
-        function moveSlide(galleryId, direction) {
-            initGallery(galleryId);
-            const gallery = document.getElementById(galleryId);
-            const slides = gallery.querySelector('.room-gallery-slides');
-            const totalSlides = slides.children.length;
-            
-            galleryStates[galleryId].currentSlide += direction;
-            
-            if (galleryStates[galleryId].currentSlide < 0) {
-                galleryStates[galleryId].currentSlide = totalSlides - 1;
-            } else if (galleryStates[galleryId].currentSlide >= totalSlides) {
-                galleryStates[galleryId].currentSlide = 0;
-            }
-            
-            updateGallery(galleryId);
-        }
-
-        function setSlide(galleryId, index) {
-            initGallery(galleryId);
-            galleryStates[galleryId].currentSlide = index;
-            updateGallery(galleryId);
-        }
-
-        function updateGallery(galleryId) {
-            const gallery = document.getElementById(galleryId);
-            const slides = gallery.querySelector('.room-gallery-slides');
-            const indicators = gallery.querySelectorAll('.room-gallery-indicator');
-            const currentSlide = galleryStates[galleryId].currentSlide;
-            
-            slides.style.transform = `translateX(-${currentSlide * 100}%)`;
-            
-            indicators.forEach((indicator, index) => {
-                if (index === currentSlide) {
-                    indicator.classList.add('active');
-                } else {
-                    indicator.classList.remove('active');
+        window.moveSlide = function(galleryId, direction) {
+            try {
+                window.initGallery(galleryId);
+                const gallery = document.getElementById(galleryId);
+                if (!gallery) {
+                    console.error('Gallery not found:', galleryId);
+                    return;
                 }
-            });
+                const slides = gallery.querySelector('.room-gallery-slides');
+                const totalSlides = slides.children.length;
+                
+                window.galleryStates[galleryId].currentSlide += direction;
+                
+                if (window.galleryStates[galleryId].currentSlide < 0) {
+                    window.galleryStates[galleryId].currentSlide = totalSlides - 1;
+                } else if (window.galleryStates[galleryId].currentSlide >= totalSlides) {
+                    window.galleryStates[galleryId].currentSlide = 0;
+                }
+                
+                window.updateGallery(galleryId);
+            } catch (error) {
+                console.error('Error in moveSlide:', error);
+            }
+        }
+
+        window.setSlide = function(galleryId, index) {
+            try {
+                window.initGallery(galleryId);
+                window.galleryStates[galleryId].currentSlide = index;
+                window.updateGallery(galleryId);
+            } catch (error) {
+                console.error('Error in setSlide:', error);
+            }
+        }
+
+        window.updateGallery = function(galleryId) {
+            try {
+                const gallery = document.getElementById(galleryId);
+                if (!gallery) return;
+                
+                const slides = gallery.querySelector('.room-gallery-slides');
+                const indicators = gallery.querySelectorAll('.room-gallery-indicator');
+                const currentSlide = window.galleryStates[galleryId].currentSlide;
+                
+                slides.style.transform = `translateX(-${currentSlide * 100}%)`;
+                
+                indicators.forEach((indicator, index) => {
+                    if (index === currentSlide) {
+                        indicator.classList.add('active');
+                    } else {
+                        indicator.classList.remove('active');
+                    }
+                });
+            } catch (error) {
+                console.error('Error in updateGallery:', error);
+            }
         }
 
         // Initialize galleries on page load
         document.addEventListener('DOMContentLoaded', function() {
-            initGallery('gallery-suite1');
-            initGallery('gallery-suite2');
+            console.log('Initializing galleries...');
+            window.initGallery('gallery-suite1');
+            window.initGallery('gallery-suite2');
+            console.log('Galleries initialized');
         });
 
         // Header scroll effect
