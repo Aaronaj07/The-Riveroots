@@ -1729,11 +1729,17 @@
 
         // Mobile menu toggle - Define globally for onclick attribute
         window.toggleMenu = function() {
+            console.log('toggleMenu called!');
             const menu = document.getElementById('navMenu');
             const toggle = document.querySelector('.mobile-toggle');
             
+            console.log('Menu element:', menu);
+            console.log('Toggle element:', toggle);
+            
             if (menu) {
+                const wasActive = menu.classList.contains('active');
                 menu.classList.toggle('active');
+                console.log('Menu toggled. Was active:', wasActive, 'Now active:', menu.classList.contains('active'));
                 
                 // Change icon based on menu state
                 if (toggle) {
@@ -1743,8 +1749,27 @@
                         toggle.innerHTML = '☰';
                     }
                 }
+            } else {
+                console.error('Menu element not found!');
             }
         };
+
+        // Ensure function is available immediately
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM loaded, toggleMenu available:', typeof window.toggleMenu);
+            
+            // Also add event listener as backup
+            const toggleBtn = document.querySelector('.mobile-toggle');
+            if (toggleBtn) {
+                console.log('Adding click listener to toggle button');
+                toggleBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    console.log('Toggle button clicked via event listener');
+                    window.toggleMenu();
+                });
+            }
+        });
 
         // Close menu when clicking on a link
         document.addEventListener('DOMContentLoaded', function() {
