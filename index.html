@@ -1829,9 +1829,11 @@
         window.suite2Total = 4;
 
         window.moveSuite1 = function(direction) {
+            console.log('moveSuite1 called with direction:', direction);
             window.suite1Current = window.suite1Current + direction;
             if (window.suite1Current < 0) window.suite1Current = window.suite1Total - 1;
             if (window.suite1Current >= window.suite1Total) window.suite1Current = 0;
+            console.log('New suite1Current:', window.suite1Current);
             window.updateSuite1();
         };
 
@@ -1853,11 +1855,19 @@
         };
 
         window.updateSuite1 = function() {
+            console.log('updateSuite1 called, current:', window.suite1Current);
             var slides = document.querySelector('#gallery-suite1 .room-gallery-slides');
             var indicators = document.querySelectorAll('#gallery-suite1 .room-gallery-indicator');
             
+            console.log('Slides element:', slides);
+            console.log('Indicators:', indicators);
+            
             if (slides) {
-                slides.style.transform = 'translateX(-' + (window.suite1Current * 100) + '%)';
+                var transform = 'translateX(-' + (window.suite1Current * 100) + '%)';
+                console.log('Setting transform:', transform);
+                slides.style.transform = transform;
+            } else {
+                console.error('Slides element not found!');
             }
             
             if (indicators) {
