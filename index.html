@@ -1237,8 +1237,8 @@
                     <div class="room-gallery" id="gallery-suite2">
                         <div class="room-gallery-slides">
                             <div class="room-gallery-slide" style="background-image: url('R2_Website.jpg');"></div>
-                            <div class="room-gallery-slide" style="background-image: url('resort_6.jpg');"></div>
-                            <div class="room-gallery-slide" style="background-image: url('resort_2.jpg');"></div>
+                            <div class="room-gallery-slide" style="background-image: url('resort_30.jpg');"></div>
+                            <div class="room-gallery-slide" style="background-image: url('resort_27.jpg');"></div>
                             <div class="room-gallery-slide" style="background-image: url('resort-1.jpg');"></div>
                         </div>
                         <button class="room-gallery-nav room-gallery-prev" onclick="moveSuite2(-1)">‹</button>
@@ -1365,6 +1365,10 @@
                         <li><strong>Home-Cooked Meals</strong> – Prepared with care and traditional methods</li>
                         <li><strong>Special Dietary Needs</strong> – We accommodate vegetarian and specific requirements</li>
                     </ul>
+
+                    <p style="margin-top: 1.5rem; padding: 1rem; background: rgba(109, 115, 94, 0.1); border-left: 4px solid var(--primary-green); border-radius: 5px;">
+                        <strong>📝 Note:</strong> Advance booking required for lunch and dinner
+                    </p>
                 </div>
             </div>
         </div>
@@ -1381,13 +1385,32 @@
                 </p>
             </div>
 
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-top: 3rem;">
-                <div style="height: 300px; background-image: url('resort_7.jpg'); background-size: cover; background-position: center; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);"></div>
-                <div style="height: 300px; background-image: url('resort_32.jpg'); background-size: cover; background-position: center; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);"></div>
-                <div style="height: 300px; background-image: url('resort_62.jpg'); background-size: cover; background-position: center; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);"></div>
-                <div style="height: 300px; background-image: url('resort_3.jpg'); background-size: cover; background-position: center; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);"></div>
-                <div style="height: 300px; background-image: url('Night_View_2.jpg'); background-size: cover; background-position: center; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);"></div>
-                <div style="height: 300px; background-image: url('Night_View_1.jpg'); background-size: cover; background-position: center; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);"></div>
+            <div style="position: relative; max-width: 1200px; margin: 3rem auto; overflow: hidden;">
+                <!-- Slider Container -->
+                <div class="gallery-slider" id="gallerySlider" style="display: flex; transition: transform 0.5s ease-in-out;">
+                    <div style="min-width: 100%; height: 500px; background-image: url('resort_7.jpg'); background-size: cover; background-position: center; border-radius: 10px;"></div>
+                    <div style="min-width: 100%; height: 500px; background-image: url('resort_32.jpg'); background-size: cover; background-position: center; border-radius: 10px;"></div>
+                    <div style="min-width: 100%; height: 500px; background-image: url('resort_62.jpg'); background-size: cover; background-position: center; border-radius: 10px;"></div>
+                    <div style="min-width: 100%; height: 500px; background-image: url('resort_3.jpg'); background-size: cover; background-position: center; border-radius: 10px;"></div>
+                    <div style="min-width: 100%; height: 500px; background-image: url('Night_View_2.jpg'); background-size: cover; background-position: center; border-radius: 10px;"></div>
+                    <div style="min-width: 100%; height: 500px; background-image: url('Night_View_1.jpg'); background-size: cover; background-position: center; border-radius: 10px;"></div>
+                </div>
+
+                <!-- Previous Button -->
+                <button onclick="moveGallerySlide(-1)" style="position: absolute; top: 50%; left: 20px; transform: translateY(-50%); background: rgba(255,255,255,0.9); border: none; width: 50px; height: 50px; border-radius: 50%; cursor: pointer; font-size: 1.5rem; box-shadow: 0 5px 15px rgba(0,0,0,0.2); z-index: 10; transition: all 0.3s ease;" onmouseover="this.style.background='white'" onmouseout="this.style.background='rgba(255,255,255,0.9)'">‹</button>
+
+                <!-- Next Button -->
+                <button onclick="moveGallerySlide(1)" style="position: absolute; top: 50%; right: 20px; transform: translateY(-50%); background: rgba(255,255,255,0.9); border: none; width: 50px; height: 50px; border-radius: 50%; cursor: pointer; font-size: 1.5rem; box-shadow: 0 5px 15px rgba(0,0,0,0.2); z-index: 10; transition: all 0.3s ease;" onmouseover="this.style.background='white'" onmouseout="this.style.background='rgba(255,255,255,0.9)'">›</button>
+
+                <!-- Dots/Indicators -->
+                <div style="text-align: center; margin-top: 1.5rem;">
+                    <span onclick="goToGallerySlide(0)" class="gallery-dot" style="display: inline-block; width: 12px; height: 12px; background: var(--primary-green); border-radius: 50%; margin: 0 5px; cursor: pointer; transition: all 0.3s ease;"></span>
+                    <span onclick="goToGallerySlide(1)" class="gallery-dot" style="display: inline-block; width: 12px; height: 12px; background: #ccc; border-radius: 50%; margin: 0 5px; cursor: pointer; transition: all 0.3s ease;"></span>
+                    <span onclick="goToGallerySlide(2)" class="gallery-dot" style="display: inline-block; width: 12px; height: 12px; background: #ccc; border-radius: 50%; margin: 0 5px; cursor: pointer; transition: all 0.3s ease;"></span>
+                    <span onclick="goToGallerySlide(3)" class="gallery-dot" style="display: inline-block; width: 12px; height: 12px; background: #ccc; border-radius: 50%; margin: 0 5px; cursor: pointer; transition: all 0.3s ease;"></span>
+                    <span onclick="goToGallerySlide(4)" class="gallery-dot" style="display: inline-block; width: 12px; height: 12px; background: #ccc; border-radius: 50%; margin: 0 5px; cursor: pointer; transition: all 0.3s ease;"></span>
+                    <span onclick="goToGallerySlide(5)" class="gallery-dot" style="display: inline-block; width: 12px; height: 12px; background: #ccc; border-radius: 50%; margin: 0 5px; cursor: pointer; transition: all 0.3s ease;"></span>
+                </div>
             </div>
         </div>
     </section>
@@ -1623,7 +1646,7 @@
 
                     <ul class="contact-details">
                         <li><strong>Phone:</strong> <a href="tel:+919447148461">+91 94471 48461</a></li>
-                        <li><strong>Email:</strong> <a href="mailto:theriveroots@gmail.com">theriveroots@gmail.com</a></li>
+                        <li><strong>Email:</strong> <a href="/cdn-cgi/l/email-protection#15617d70677c6370677a7a6166557278747c793b767a78"><span class="__cf_email__" data-cfemail="06726e63746f7063746969727546616b676f6a2865696b">[email&#160;protected]</span></a></li>
                         <li><strong>Location:</strong> Kumbalangi, Kerala, India</li>
                         <li><strong>Website:</strong> <a href="https://theriveroots.in">theriveroots.in</a></li>
                     </ul>
@@ -1704,7 +1727,7 @@
         </div>
     </footer>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         // Smooth scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -1796,109 +1819,112 @@
             console.log('Form submitted:', Object.fromEntries(formData));
         }
 
-        // Room Gallery Slider - Simple and Reliable
-        var suite1Current = 0;
-        var suite2Current = 0;
-        var suite1Total = 4;
-        var suite2Total = 4;
+        // Room Gallery Slider - Define globally
+        window.suite1Current = 0;
+        window.suite2Current = 0;
+        // Room gallery sliders
+        window.suite1Current = 0;
+        window.suite2Current = 0;
+        window.suite1Total = 4;
+        window.suite2Total = 4;
 
-        function moveSuite1(direction) {
-            suite1Current = suite1Current + direction;
-            if (suite1Current < 0) suite1Current = suite1Total - 1;
-            if (suite1Current >= suite1Total) suite1Current = 0;
-            updateSuite1();
-        }
+        window.moveSuite1 = function(direction) {
+            window.suite1Current = window.suite1Current + direction;
+            if (window.suite1Current < 0) window.suite1Current = window.suite1Total - 1;
+            if (window.suite1Current >= window.suite1Total) window.suite1Current = 0;
+            window.updateSuite1();
+        };
 
-        function moveSuite2(direction) {
-            suite2Current = suite2Current + direction;
-            if (suite2Current < 0) suite2Current = suite2Total - 1;
-            if (suite2Current >= suite2Total) suite2Current = 0;
-            updateSuite2();
-        }
+        window.moveSuite2 = function(direction) {
+            window.suite2Current = window.suite2Current + direction;
+            if (window.suite2Current < 0) window.suite2Current = window.suite2Total - 1;
+            if (window.suite2Current >= window.suite2Total) window.suite2Current = 0;
+            window.updateSuite2();
+        };
 
-        function setSuite1(index) {
-            suite1Current = index;
-            updateSuite1();
-        }
+        window.setSuite1 = function(index) {
+            window.suite1Current = index;
+            window.updateSuite1();
+        };
 
-        function setSuite2(index) {
-            suite2Current = index;
-            updateSuite2();
-        }
+        window.setSuite2 = function(index) {
+            window.suite2Current = index;
+            window.updateSuite2();
+        };
 
-        function updateSuite1() {
+        window.updateSuite1 = function() {
             var slides = document.querySelector('#gallery-suite1 .room-gallery-slides');
             var indicators = document.querySelectorAll('#gallery-suite1 .room-gallery-indicator');
             
             if (slides) {
-                slides.style.transform = 'translateX(-' + (suite1Current * 100) + '%)';
+                slides.style.transform = 'translateX(-' + (window.suite1Current * 100) + '%)';
             }
             
             if (indicators) {
                 for (var i = 0; i < indicators.length; i++) {
-                    if (i === suite1Current) {
+                    if (i === window.suite1Current) {
                         indicators[i].classList.add('active');
                     } else {
                         indicators[i].classList.remove('active');
                     }
                 }
             }
-        }
+        };
 
-        function updateSuite2() {
+        window.updateSuite2 = function() {
             var slides = document.querySelector('#gallery-suite2 .room-gallery-slides');
             var indicators = document.querySelectorAll('#gallery-suite2 .room-gallery-indicator');
             
             if (slides) {
-                slides.style.transform = 'translateX(-' + (suite2Current * 100) + '%)';
+                slides.style.transform = 'translateX(-' + (window.suite2Current * 100) + '%)';
             }
             
             if (indicators) {
                 for (var i = 0; i < indicators.length; i++) {
-                    if (i === suite2Current) {
+                    if (i === window.suite2Current) {
                         indicators[i].classList.add('active');
                     } else {
                         indicators[i].classList.remove('active');
                     }
                 }
             }
-        }
+        };
 
         // Header scroll effect
         let lastScroll = 0;
 
         // Gallery Slider Functions
-        let currentSlide = 0;
-        const totalSlides = 6;
+        let currentGallerySlide = 0;
+        const totalGallerySlides = 6;
 
-        function moveSlide(direction) {
-            currentSlide += direction;
+        window.moveGallerySlide = function(direction) {
+            currentGallerySlide += direction;
             
-            if (currentSlide < 0) {
-                currentSlide = totalSlides - 1;
-            } else if (currentSlide >= totalSlides) {
-                currentSlide = 0;
+            if (currentGallerySlide < 0) {
+                currentGallerySlide = totalGallerySlides - 1;
+            } else if (currentGallerySlide >= totalGallerySlides) {
+                currentGallerySlide = 0;
             }
             
-            updateSlider();
-        }
+            updateGallerySlider();
+        };
 
-        function goToSlide(index) {
-            currentSlide = index;
-            updateSlider();
-        }
+        window.goToGallerySlide = function(index) {
+            currentGallerySlide = index;
+            updateGallerySlider();
+        };
 
-        function updateSlider() {
+        function updateGallerySlider() {
             const slider = document.getElementById('gallerySlider');
-            const dots = document.querySelectorAll('.slider-dot');
+            const dots = document.querySelectorAll('.gallery-dot');
             
             if (slider) {
-                slider.style.transform = 'translateX(-' + (currentSlide * 100) + '%)';
+                slider.style.transform = 'translateX(-' + (currentGallerySlide * 100) + '%)';
             }
             
             if (dots) {
                 dots.forEach(function(dot, index) {
-                    if (index === currentSlide) {
+                    if (index === currentGallerySlide) {
                         dot.style.background = 'var(--primary-green)';
                         dot.style.transform = 'scale(1.2)';
                     } else {
@@ -1911,21 +1937,5 @@
 
         // Auto-advance slider every 5 seconds
         setInterval(function() {
-            moveSlide(1);
-        }, 5000);
-
-        window.addEventListener('scroll', function() {
-            const header = document.querySelector('header');
-            const currentScroll = window.pageYOffset;
-            
-            if (currentScroll > 100) {
-                header.style.boxShadow = '0 5px 20px rgba(0,0,0,0.1)';
-            } else {
-                header.style.boxShadow = '0 2px 10px rgba(0,0,0,0.05)';
-            }
-            
-            lastScroll = currentScroll;
-        });
-    </script>
-</body>
-</html>
+            moveGallerySlide(1);
+        }, 5000)
