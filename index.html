@@ -1062,6 +1062,77 @@
             }
         }
     </style>
+    
+    <!-- Suite Slider Functions - Load in HEAD to ensure availability -->
+    <script>
+        // Initialize suite slider variables and functions IMMEDIATELY
+        window.suite1Current = 0;
+        window.suite2Current = 0;
+        window.suite1Total = 4;
+        window.suite2Total = 4;
+
+        window.moveSuite1 = function(direction) {
+            window.suite1Current = window.suite1Current + direction;
+            if (window.suite1Current < 0) window.suite1Current = window.suite1Total - 1;
+            if (window.suite1Current >= window.suite1Total) window.suite1Current = 0;
+            window.updateSuite1();
+        };
+
+        window.moveSuite2 = function(direction) {
+            window.suite2Current = window.suite2Current + direction;
+            if (window.suite2Current < 0) window.suite2Current = window.suite2Total - 1;
+            if (window.suite2Current >= window.suite2Total) window.suite2Current = 0;
+            window.updateSuite2();
+        };
+
+        window.setSuite1 = function(index) {
+            window.suite1Current = index;
+            window.updateSuite1();
+        };
+
+        window.setSuite2 = function(index) {
+            window.suite2Current = index;
+            window.updateSuite2();
+        };
+
+        window.updateSuite1 = function() {
+            var slides = document.querySelector('#gallery-suite1 .room-gallery-slides');
+            var indicators = document.querySelectorAll('#gallery-suite1 .room-gallery-indicator');
+            
+            if (slides) {
+                slides.style.transform = 'translateX(-' + (window.suite1Current * 100) + '%)';
+            }
+            
+            if (indicators) {
+                for (var i = 0; i < indicators.length; i++) {
+                    if (i === window.suite1Current) {
+                        indicators[i].classList.add('active');
+                    } else {
+                        indicators[i].classList.remove('active');
+                    }
+                }
+            }
+        };
+
+        window.updateSuite2 = function() {
+            var slides = document.querySelector('#gallery-suite2 .room-gallery-slides');
+            var indicators = document.querySelectorAll('#gallery-suite2 .room-gallery-indicator');
+            
+            if (slides) {
+                slides.style.transform = 'translateX(-' + (window.suite2Current * 100) + '%)';
+            }
+            
+            if (indicators) {
+                for (var i = 0; i < indicators.length; i++) {
+                    if (i === window.suite2Current) {
+                        indicators[i].classList.add('active');
+                    } else {
+                        indicators[i].classList.remove('active');
+                    }
+                }
+            }
+        };
+    </script>
 </head>
 <body>
     <!-- Header -->
@@ -1824,86 +1895,6 @@
             // Log form data (for development)
             console.log('Form submitted:', Object.fromEntries(formData));
         }
-
-        // Room Gallery Slider - Define globally
-        window.suite1Current = 0;
-        // Room gallery sliders - Initialize variables
-        window.suite1Current = 0;
-        window.suite2Current = 0;
-        window.suite1Total = 4;
-        window.suite2Total = 4;
-
-        window.moveSuite1 = function(direction) {
-            console.log('moveSuite1 called with direction:', direction);
-            window.suite1Current = window.suite1Current + direction;
-            if (window.suite1Current < 0) window.suite1Current = window.suite1Total - 1;
-            if (window.suite1Current >= window.suite1Total) window.suite1Current = 0;
-            console.log('New suite1Current:', window.suite1Current);
-            window.updateSuite1();
-        };
-
-        window.moveSuite2 = function(direction) {
-            window.suite2Current = window.suite2Current + direction;
-            if (window.suite2Current < 0) window.suite2Current = window.suite2Total - 1;
-            if (window.suite2Current >= window.suite2Total) window.suite2Current = 0;
-            window.updateSuite2();
-        };
-
-        window.setSuite1 = function(index) {
-            window.suite1Current = index;
-            window.updateSuite1();
-        };
-
-        window.setSuite2 = function(index) {
-            window.suite2Current = index;
-            window.updateSuite2();
-        };
-
-        window.updateSuite1 = function() {
-            console.log('updateSuite1 called, current:', window.suite1Current);
-            var slides = document.querySelector('#gallery-suite1 .room-gallery-slides');
-            var indicators = document.querySelectorAll('#gallery-suite1 .room-gallery-indicator');
-            
-            console.log('Slides element:', slides);
-            console.log('Indicators:', indicators);
-            
-            if (slides) {
-                var transform = 'translateX(-' + (window.suite1Current * 100) + '%)';
-                console.log('Setting transform:', transform);
-                slides.style.transform = transform;
-            } else {
-                console.error('Slides element not found!');
-            }
-            
-            if (indicators) {
-                for (var i = 0; i < indicators.length; i++) {
-                    if (i === window.suite1Current) {
-                        indicators[i].classList.add('active');
-                    } else {
-                        indicators[i].classList.remove('active');
-                    }
-                }
-            }
-        };
-
-        window.updateSuite2 = function() {
-            var slides = document.querySelector('#gallery-suite2 .room-gallery-slides');
-            var indicators = document.querySelectorAll('#gallery-suite2 .room-gallery-indicator');
-            
-            if (slides) {
-                slides.style.transform = 'translateX(-' + (window.suite2Current * 100) + '%)';
-            }
-            
-            if (indicators) {
-                for (var i = 0; i < indicators.length; i++) {
-                    if (i === window.suite2Current) {
-                        indicators[i].classList.add('active');
-                    } else {
-                        indicators[i].classList.remove('active');
-                    }
-                }
-            }
-        };
 
         // Header scroll effect
         let lastScroll = 0;
