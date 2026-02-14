@@ -1834,11 +1834,19 @@
                     if (window.innerWidth <= 968) {
                         const menu = document.getElementById('navMenu');
                         const toggle = document.querySelector('.mobile-toggle');
+                        const dropdown = document.querySelector('.dropdown');
+                        
+                        // Close main menu
                         if (menu && menu.classList.contains('active')) {
                             menu.classList.remove('active');
                             if (toggle) {
                                 toggle.innerHTML = '☰';
                             }
+                        }
+                        
+                        // Close dropdown if open
+                        if (dropdown && dropdown.classList.contains('active')) {
+                            dropdown.classList.remove('active');
                         }
                     }
                 });
