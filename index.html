@@ -1826,27 +1826,39 @@
             });
         });
 
-        // Close menu when clicking on a link
+        // Close menu when clicking on a link - ENHANCED
         document.addEventListener('DOMContentLoaded', function() {
             const navLinks = document.querySelectorAll('.nav-menu a');
+            console.log('Auto-close setup: Found', navLinks.length, 'navigation links');
+            
             navLinks.forEach(link => {
-                link.addEventListener('click', function() {
+                link.addEventListener('click', function(e) {
+                    console.log('Link clicked:', this.textContent.trim());
+                    
+                    // Only auto-close on mobile
                     if (window.innerWidth <= 968) {
+                        console.log('Mobile detected - closing menu');
+                        
                         const menu = document.getElementById('navMenu');
                         const toggle = document.querySelector('.mobile-toggle');
                         const dropdown = document.querySelector('.dropdown');
                         
-                        // Close main menu
-                        if (menu && menu.classList.contains('active')) {
+                        // Always close main menu on mobile (remove the active check)
+                        if (menu) {
                             menu.classList.remove('active');
-                            if (toggle) {
-                                toggle.innerHTML = '☰';
-                            }
+                            console.log('Menu closed');
+                        }
+                        
+                        // Reset toggle icon
+                        if (toggle) {
+                            toggle.innerHTML = '☰';
+                            console.log('Toggle icon reset to hamburger');
                         }
                         
                         // Close dropdown if open
-                        if (dropdown && dropdown.classList.contains('active')) {
+                        if (dropdown) {
                             dropdown.classList.remove('active');
+                            console.log('Dropdown closed');
                         }
                     }
                 });
